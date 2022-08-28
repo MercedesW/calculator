@@ -1,7 +1,7 @@
 
 const DEFAULT_VALUE = 0;
 
-let currentValue = DEFAULT_VALUE;
+let currentValue = [DEFAULT_VALUE];
 
 const displayElement = document.getElementById('display');
 
@@ -13,8 +13,9 @@ keys.forEach((key) => {
 
 function changeDisplay(event) {
     const key = event.target.textContent;
-    displayElement.textContent = key;
-    currentValue = key;
+    currentValue.push(key);
+    displayElement.textContent = currentValue.join('');
+    
 }
 
 // TODO
