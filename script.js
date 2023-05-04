@@ -1,41 +1,37 @@
+const INIT_VALUE = 0;
 
-const DEFAULT_VALUE = 0;
+let listNumbers = [];
+let operator = "";
 
-let currentValue = [DEFAULT_VALUE];
+let display = document.getElementById("display");
+display.textContent = INIT_VALUE;
 
-const displayElement = document.getElementById('display');
-
-const keys = document.querySelectorAll('.calculator_keys button');
-
-keys.forEach((key) => {
-    key.addEventListener('click', changeDisplay);
+let numberBtns = document.querySelectorAll('.number');
+numberBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+        display.textContent = button.textContent;
+        listNumbers.push(parseFloat(button.textContent));
+    })
 })
 
-function changeDisplay(event) {
-    const key = event.target.textContent;
-    currentValue.push(key);
-    displayElement.textContent = currentValue.join('');
-    
-}
+let operatorBtns = document.querySelectorAll('.operator');
+operatorBtns.forEach((button) => {
+    button.addEventListener('click', () => {
+        if (listNumbers.length > 1) {
+            let result = operate(operator, listNumbers[0], listNumbers[1]);
+            display.textContent = result
+            listNumbers = [result];
+        }
+        operator = button.textContent;
+    })
+})
 
-// TODO
-/*¡Haz que la calculadora funcione!
-Deberá almacenar el primer número que se ingresa en la calculadora cuando un usuario presiona un operador,
-y también guardar qué operación se ha elegido y luego operate()en ellos cuando el usuario presiona la tecla "=".
-Ya debería tener el código que puede llenar la pantalla, así que una vez que operate()se haya llamado,
-actualice la pantalla con la 'solución' de la operación.
-Esta es la parte más difícil del proyecto.
-Debe descubrir cómo almacenar todos los valores y llamar a la función operar con ellos.
-No te sientas mal si te toma un tiempo descubrir la lógica.
-*/
-
-
-
-
-
-
-// Auxiliares
-
+let clearBtn = document.getElementById("clear");
+clearBtn.addEventListener('click', () => {
+    operator = "";
+    listNumbers = [];
+    display.textContent = INIT_VALUE;
+})
 
 const add = (a, b) => {
 	return a + b;
@@ -53,6 +49,17 @@ const divide = (a, b) => {
     return a / b;
 };
 
-const operate = (operation, a, b) => {
-    return operation(a, b);
-};
+function operate(operator, a, b) {
+    
+    switch(operator) {
+        case '+':
+            return add(a, b);
+        case '-':
+            return subtract(a, b);
+        case '*':
+            return multiply(a, b);
+        case '/':
+            if (b != 0) return divide(a, b);
+            else return "Error";
+    }
+}

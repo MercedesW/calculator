@@ -9,27 +9,33 @@
     <title>Calculator</title>
 </head>
 <body class="center">
-    <div class="calculator">
-        <div id="display" class="calculator_display">1</div>
-        <div class="calculator_keys">
-            <button class="operator plus">+</button>
-            <button class="operator minus">-</button>
-            <button class="operator multiply">*</button>
-            <button class="operator divide">/</button>
-            <button class="one">1</button>
-            <button class="two">2</button>
-            <button class="three">3</button>
-            <button class="four">4</button>
-            <button class="five">5</button>
-            <button class="six">6</button>
-            <button class="seven">7</button>
-            <button class="eight">8</button>
-            <button class="nine">9</button>
-            <button class="zero">0</button>
-            <button class="arrow">⇐</button>
-            <button class="decimal">.</button>
-            <button class="clear">C</button>
-            <button class="equal">=</button>
+    <div class="container">
+        <div class="grid">
+            <div id="display" class="display"></div>
+            <button id ="clear" class="clear">CLEAR</button>
+            <div class="operators">
+                <button class="operator divide">/</button>
+                <button class="operator multiply">*</button>
+                <button class="operator minus">-</button>
+                <button class="operator plus">+</button>
+            </div>
+            <div class="numbers">
+                <button id="seven" class="number seven">7</button>
+                <button id="eight" class="number eight">8</button>
+                <button id="nine" class="number nine">9</button>
+                <button id="four" class="number four">4</button>
+                <button id="five" class="number five">5</button>
+                <button id="six" class="number six">6</button>
+                
+                <button id="one" class="number one">1</button>
+                <button id="two" class="number two">2</button>
+                <button id="three" class="number three">3</button>
+                
+                
+                <button id="point" class="number point">.</button>
+                <button id ="equal" class="operator equal">=</button>
+                <button id="zero" class="number zero">0</button>
+            </div>
         </div>
     </div>
 </body>
