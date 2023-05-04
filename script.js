@@ -4,7 +4,6 @@ let listNumbers = [];
 let operator = "";
 
 let display = document.getElementById("display");
-display.textContent = INIT_VALUE;
 
 let numberBtns = document.querySelectorAll('.number');
 numberBtns.forEach((button) => {
@@ -17,6 +16,11 @@ numberBtns.forEach((button) => {
 let operatorBtns = document.querySelectorAll('.operator');
 operatorBtns.forEach((button) => {
     button.addEventListener('click', () => {
+        if (listNumbers.length == 1 && button.textContent == "=") {
+            listNumbers = [];
+            operator = ""
+            return
+        }
         if (listNumbers.length > 1) {
             let result = operate(operator, listNumbers[0], listNumbers[1]);
             display.textContent = result
@@ -30,7 +34,7 @@ let clearBtn = document.getElementById("clear");
 clearBtn.addEventListener('click', () => {
     operator = "";
     listNumbers = [];
-    display.textContent = INIT_VALUE;
+    display.textContent = ""
 })
 
 const add = (a, b) => {
